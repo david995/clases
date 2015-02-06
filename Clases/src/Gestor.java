@@ -31,7 +31,7 @@ public class Gestor {
 			int dni;
 			do{
 			opcionusuario = menu(tec);
-			if (opcionusuario==0){
+			
 			switch(opcionusuario){
 			case 0:
 				break;
@@ -82,7 +82,9 @@ public class Gestor {
 			}
 			
 			}while(opcionusuario!=0);
-			
+		
+			}
+		}
 	
 
 
