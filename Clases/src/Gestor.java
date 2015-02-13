@@ -31,10 +31,12 @@ public class Gestor {
 			int dni;
 			do{
 			opcionusuario = menu(tec);
-			
+			//if (opcionusuario == 0){
+			//}else{
 			switch(opcionusuario){
 			case 0:
-				break;
+				e1.guardar("trabajadore.txt");
+			break;
 			case 1:
 				System.out.println("Numero de trabajadores");
 					System.out.println(e1.getNumTrabajadores());
@@ -76,11 +78,13 @@ public class Gestor {
 				}
 				break;
 			case 5:
+				System.out.print(e1.listarEmpleados());
 				break;
 			case 6:
+				System.out.println(e1.toHistograma());
 				break;
 			}
-			
+			//}
 			}while(opcionusuario!=0);
 		
 			}

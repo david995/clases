@@ -19,7 +19,7 @@ de	cada	trabajador	que	aparece	en	el	fichero.*/
 	public Empresa() throws FileNotFoundException{
 		
 		nombre = "PCCOMPONENTES";
-		antiguedadEmpresa = 20;
+		antiguedadEmpresa = 8;
 		
 		Scanner in = new Scanner(new FileReader("trabajadoresEmpresa.txt"));
 		
@@ -65,11 +65,13 @@ de	cada	trabajador	que	aparece	en	el	fichero.*/
 	}
 	public void anyadirEmpleado(Trabajadores e){
 		boolean existe =existeEmpleado(Integer.parseInt(e.getDNI()));
+		boolean insertado=false;
 		if(existe==true && numTrabajadores!=maxTrabajadores){
-		for (int i = 0; i < maxTrabajadores; i++) {
+		for (int i = 0; i < maxTrabajadores && insertado==false; i++) {
 			if(trabajadores[i]==null){
 		trabajadores[i]=e;
 		numTrabajadores=numTrabajadores+1;
+		insertado=true;
 			}
 		}
 		}
@@ -128,34 +130,26 @@ de	cada	trabajador	que	aparece	en	el	fichero.*/
 	public String listarEmpleados(){
 		String lista=" ";
 		for (int i = 0; i < trabajadores.length; i++) {
-			/*System.out.println("Empleado"+1);
-			
-			System.out.println("Nombre: "+);
-			
-			System.out.println("DNI: "+trabajadores[i].getDNI());
-			
-			System.out.println("Antiguedad: "+trabajadores[i].getAntiguedad());
-			
-			System.out.println("Salario: "+trabajadores[i].getSalario());
-			
-			System.out.println("Departamento: "+trabajadores[i].getDepartamento());*/
-			
-			 //lista = trabajadores[i].getNombre()+" "+trabajadores[i].getDNI()+" "+String.valueOf(trabajadores[i].getAntiguedad())+" "+String.valueOf(trabajadores[i].getSalario())+" "+trabajadores[i].getDepartamento();
+			if(trabajadores[i]!=null){
 			lista = lista + trabajadores[i].toString()+"\n";
-			
+		
+			}
 		}
 		return lista;
 	}
-	public void guardar(PrintWriter fich) throws FileNotFoundException{
+	public void guardar(String fich) throws FileNotFoundException{
 		PrintWriter out = new PrintWriter(fich);
 		out.println(listarEmpleados());
 		out.close();
+		System.out.println("Se ha escrito en el fichero");
 	}
 	public String toHistograma(){
 		String cadenahistograma="";
 		int[] histograma = new int[antiguedadEmpresa+1];
 		for (int i = 0; i < trabajadores.length; i++) {
+			if(trabajadores[i]!=null){
 			histograma[trabajadores[i].getAntiguedad()]++;
+			}
 		}
 		for (int i = 0; i < histograma.length; i++) {
 			cadenahistograma=cadenahistograma+i+"años: ";
