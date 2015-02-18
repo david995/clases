@@ -13,8 +13,7 @@ public class Usuario {
 		num_prestamos = 0;
 	}
 
-	public Usuario(String nombre_, String dni_, String direccion_,
-			Prestamo[] prestamos_) {
+	public Usuario(String nombre_, String dni_, String direccion_,Prestamo[] prestamos_) {
 
 		nombre = nombre_;
 		dni = dni_;
@@ -93,6 +92,10 @@ public class Usuario {
 			}// if
 		}// else
 	}// for
+	
+	public int getdni(){
+		return Integer.parseInt(dni);
+	}
 
 	public String toString() {
 		String cadena = nombre + " " + dni + " " + direccion + " "+ String.valueOf(num_prestamos) + " " + prestamos;
